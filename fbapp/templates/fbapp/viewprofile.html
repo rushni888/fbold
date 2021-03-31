@@ -1,0 +1,69 @@
+{% extends "fbapp/home.html" %}
+{% block content %}
+{% load static %}
+<script>
+  $(document).ready(function () {
+
+    $('.editbtn').click(function () {
+
+      $('.editbtn').prop("hidden", true);
+      $('.savebtn').prop("hidden", false);
+      $('#firstname').prop("readonly", false);
+      $('#surname').prop("readonly", false);
+      $('#upload').prop("hidden", false);
+      return false;
+    });
+
+  });
+</script>
+
+
+<div class="row">
+  <div class="card mb-3 col-md-8 offset-md-2" style="background-color: whitesmoke; border-style:none; ">
+    <div class="card-body">
+      <h3 class="card-title">Profile</h3>
+      <p class="card-text">
+
+          <!-- {% url 'fbapp:viewprofile' %} -->
+        <form id="formprof" method="POST" action="/facebook/viewprofile/" enctype="multipart/form-data">
+          {% csrf_token %}
+          <div class="form-group">
+            <div class="row">
+              <div class="col-md-5">
+                
+                <img 
+                  {% if pic %} 
+                    src="{{ pic.ProfilePic.url }}"
+                  {% else %}
+                    src="{% static 'fbapp/images/defaulltprofpic.png' %}"
+                  {% endif %} class="card-img-top " alt="new photo here" style="width: 100px; height: 100px; float: left;" >
+              
+               
+                <div class="form-group">
+                  <label for="picupload" id="upload" hidden><i class="fas fa-edit"></i>Picture</label>
+                  <input type="file" class="form-control-file" id="picupload" name="picupload" hidden>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="firstname" class="text-bold">First Name</label>
+            <input type="text" class="form-control" class="viewtext" id="firstname" name="firstname"
+              aria-describedby="emailHelp" value="{{ details.firstname }}" readonly>
+          </div>
+          <div class="form-group">
+            <label for="surname" class="text-bold">Sur Name</label>
+            <input type="text" class="form-control" class="viewtext" id="surname" name="surname"
+              aria-describedby="emailHelp" value="{{ details.lastname }}" readonly>
+          </div>
+
+          <input type="button" class="btn btn-primary editbtn" value="Edit">
+          <input type="submit" class="btn btn-primary savebtn" value="Save" hidden>
+
+        </form>
+
+      </p>
+    </div>
+  </div>
+</div>
+{% endblock %}

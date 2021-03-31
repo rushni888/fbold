@@ -1,0 +1,93 @@
+{% extends "basetemplate.html" %}
+{% load static %}
+{% block col1 %}
+<style>
+    img{
+        /* border: 1px solid #29487d; */
+        height: 35px;
+        width: 35px;
+    }
+    .height{
+        height: 28px;
+    }
+    .mynav{
+        background-color:#435f9c;
+        color: whitesmoke;
+        border-right: #29487d;
+        width: 100%;    
+      }
+    .mynav:hover{
+        color:whitesmoke;
+        background-color:#29487d; ;
+
+    }
+    
+
+</style>
+<div class="col-md-6 ">
+<div class="row">
+<div class="col-md-2 mt-3">
+   
+    <a href="#" class="mt-1">
+        <img src="{% static 'fbapp/images/fblog.png' %}" alt="logo" class="responsive">
+    </a>
+</div>
+<div  class="col-md-8">
+    <div class="input-group mt-3">
+        <input type="text" class="form-control log_textbox" placeholder="Search Facebook" aria-label="Search Facebook"
+            aria-describedby="search" id="searchtextbox">
+        <div class="input-group-append">
+            <i class="fa fa-search input-group-text" aria-hidden="true"></i>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+{% endblock %}
+{% block row1col2 %}
+<div class="col-md-6">
+    <div class="row">
+<ul class="nav nav-pills mt-3">
+    <div class="col-md-4">
+        <li class="nav-item ">
+          <a class="nav-link mynav " href="#">Rushni</a>
+        </li>
+    </div>
+    <div class="col-md-4">
+        <li class="nav-item ">
+          <a class="nav-link mynav" href="#">Home</a>
+        </li>
+    </div>
+    <div class="col-md-4">
+        <li class="nav-item ">
+          <a class="nav-link mynav" href="#">Create</a>
+        </li>
+    </div>        
+      </ul>
+    </div>
+    </div>
+{% endblock %}
+{% block row2 %}
+<div class="col-md-2">
+        <ul class="nav flex-column">
+                <li class="nav-item">
+                  <a class="nav-link " href="{% url 'fbapp:changepassword' %}" style="color: black;">Change password</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'fbapp:viewprofile' %}" style="color: black;" >View Profile</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'fbapp:addfriend' %}" style="color: black;">Add Friend</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'fbapp:viewfriend' %}" style="color: black;">View Friend</a>
+                  </li>
+               
+              </ul>
+</div>
+<div class="col-md-8" style="background-color: whitesmoke;">
+{% block content %}
+{% endblock %}
+    </div>
+
+{% endblock %}

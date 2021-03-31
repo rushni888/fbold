@@ -1,0 +1,64 @@
+{% extends "fbapp/home.html" %}
+{% block content %}
+{% load static %}
+<script>
+      $(document).ready(function () {
+
+$('.btnview').click(function () {            
+
+    $.ajax({
+        url: 'http://127.0.0.1:8000/facebook/acceptrequest/',
+        type: 'POST',
+        data: {
+            sen_id: this.id,
+            csrfmiddlewaretoken: '{{ csrf_token }}'
+        },
+        success: function (status,send_id) {
+            $('#'+ send_id).html(status);       
+        },
+        error: function (res) {
+            console.log(res);
+        }
+    })
+});
+
+$('.btncancel').click(function () {            
+
+$.ajax({
+    url: 'http://127.0.0.1:8000/facebook/cancelrequest/',
+    type: 'POST',
+    data: {
+        sen_id: this.id,
+        csrfmiddlewaretoken: '{{ csrf_token }}'
+    },
+    success: function (status) {
+        console.log(status)              
+    },
+    error: function (res) {
+        console.log(res);
+    }
+})
+});
+
+
+
+});
+</script>
+
+
+    {% csrf_token %}
+    <ul class="list-group list-group-flush">
+        {% for req_user in req_frnds%}
+        <div class="row">
+            <div class=" offset-md-2 col-md-2" >
+                <li class="list-group-item" style="background-color: whitesmoke;">{{ req_user.firstname }}</li>
+            </div>
+            <div class="col-md-5 ">               
+                <button type="submit"  class="btnview mt-3" id="{{ req_user.user.id }}">Accept Request</button>
+                <button  class="btncancel mt-3" id="{{ req_user.user.id }}">Cancel Request</button>
+            </div>
+        </div>
+        {% endfor %}
+    </ul>
+
+{% endblock %}

@@ -1,0 +1,43 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script>
+       $(document).ready(function(){
+			// $('getbtn').click(function(){
+				
+			// })
+
+            $('#btn').click( () => {
+
+                $.ajax({
+                    url: 'http://127.0.0.1:8000/facebook/sendMsg/',
+                    type: 'POST',
+                    data: { msg: $('#msg').val(), csrfmiddlewaretoken: '{{ csrf_token }}'},
+                    success: (res) => {
+                        console.log(res);
+                    },
+                    error: (err) => {
+                        console.log(err);
+                    }
+                });
+
+            });
+
+		})
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+        <button id="getbtn">Click me</button>
+    
+        <br>
+        
+        <input type="text" id="msg">
+        <button id="btn">send</button>
+</body>
+</html>

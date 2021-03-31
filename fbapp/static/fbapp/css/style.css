@@ -1,0 +1,125 @@
+.row1{
+    background-color: #435f9c;
+    height:6vw;
+    color:#f5f5f5; 
+ 
+}
+
+.facebooklogo{
+    font-family:Helvetica;
+    font-weight: bold;
+    letter-spacing: -0.03em;
+    margin-left: 25%;
+   
+}
+
+.log_textbox{
+
+    border:1px solid #29487d;
+
+ 
+}
+
+.log_btn{
+    background-color:#4267b2;
+    color: white;
+    border:1px solid #29487d;
+    font-weight: 600;
+    
+}
+
+.log_btn:hover{
+background-color:  #435f9c;
+}
+
+.lbllogin{
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: -0.04em;
+    text-shadow: 1px 1px  #29487d;
+}
+
+.row2{
+    background: linear-gradient(white, #D3D8E8);
+   
+}
+
+a{
+    color: #9cb4d8;
+    font-size: 12px;  
+    letter-spacing: -0.04em;
+    margin-left: 34%;
+    text-shadow: 1px 1px  #29487d;
+    font-weight: 500;
+}
+
+a:hover{
+    text-decoration: underline;
+    color: #9cb4d8;
+}
+
+.desc
+{
+    color: #0e385f;
+    font-size: 20px;
+    font-weight: bold;
+    line-height: 29px;
+    margin-top: 40px;
+    width: 450px;
+    word-spacing: -1px;
+}
+
+.desc2{
+    font-size: 37px;
+    color: #333333;
+    line-height: 2.5;
+    font-weight: 650;
+}
+
+.desc3
+{
+    color: #1d2129;
+    font-size: 18px;
+}
+
+.lbl_reg{
+    color:  #90949c; 
+}
+.lbl_reg2{
+    color: #777777;
+}
+
+.sub_btn{
+    background: linear-gradient(#598e46,#9edd83);
+    color: whitesmoke;
+    width: 46%;
+    border:1px solid #2c5115 ;
+    cursor: pointer;
+    height: 3vw;
+    border-radius: 5px;
+    font-weight: 500;
+}
+
+.sub_btn:hover{
+    background: linear-gradient(#5f9c4c,#9edd83);
+    color: whitesmoke;
+}
+
+.desc{
+    float: right;
+}
+
+img{
+    float: right;
+} 
+
+.desc4{
+    font-size: 11px; 
+    line-height: 0.5;   
+}
+#lastdesc{
+    font-weight: 500;
+}
+
+
+

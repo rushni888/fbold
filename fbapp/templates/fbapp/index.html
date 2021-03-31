@@ -1,0 +1,180 @@
+{% extends "basetemplate.html" %}
+{% load static %}
+{% block row1col2 %}
+  
+    <div class="col-md-6">
+      <form class="ml-5" action="{% url 'fbapp:login' %} " method="POST">
+
+        {% csrf_token %}
+        <div class="form-row">
+          <div class="col-md-4 ">
+            <label class="mb-0 pb-0 mt-2 mr-1 lbllogin " for="validationDefault01">Email or Phone</label>
+            <input class="log_textbox" type="text" id="loguser" name="loguser" required>
+            {% if incorrect_user %}
+            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+              <strong>{{ incorrect_user }}</strong>
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            {% endif %}
+          </div>
+          <div class="col-md-4 ">
+            <label class="mb-0 pb-0 mt-2 ml-1 lbllogin" for="validationDefault02">Password</label>
+            <input type="password" name="logpass" class="log_textbox" id="logpass" required>
+            {% if incorrect_password %}
+            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+              <strong>{{ incorrect_password }}</strong>
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            {% endif %}
+
+          </div>
+          <div class="col-md-4 mt-4 pt-1 ">
+            <button class="log_textbox log_btn">Log In</button>
+          </div><br>
+          <a href="#">Forgotten account?</a>
+        </div>
+      </form>
+
+    </div>
+  
+  {% endblock %}
+  {% block row2 %}
+    <div class="col-md-6 col1">
+      <div class="row">
+        <div class="col-md-10" style="margin-left: 10.5%; ">
+          <p class="desc">Facebook helps you connect and share with the people in your life.</p>
+        </div>
+        <div class="col-md-12 " style="margin-left: 8%; margin-top: 0%; "><img
+            src="{% static 'fbapp/images/picnetwork1.png' %}" alt=""></div>
+
+      </div>
+    </div>
+
+
+    <div class="col-md-4 col2">
+
+      <span class="desc2 ml-5">Create an account</span>
+      <p class="desc3 ml-5">It's quick and easy.</p>
+      <form class="ml-5" method="POST" action="{% url 'fbapp:index' %}">
+        {% csrf_token %}
+        <div class="form-row ">
+          <div class="form-group col-md-6">
+            <input type="text" class="form-control " id="fname" name="fname" placeholder="First Name">
+          </div>
+          <div class="form-group col-md-6">
+            <input type="text" class="form-control" id="lname" name="lname" placeholder="Sur Name">
+
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group col-md-12">
+
+            <input type="text" class="form-control" id="username" name="username" placeholder="Email Or Mobile">
+            {% if msg %}
+            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+              <strong>{{ msg }}</strong>
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            {% endif %}
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-12">
+
+            <input type="password" class="form-control" id="password" name="password" placeholder="New password">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <label class="lbl_reg" for="">Birthday</label>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-3">
+
+            <select name="day" id="" class="form-control">
+              <option value="">Day</option>
+              {% for i in day %}
+              <option>{{ forloop.counter }}</option>
+              {% endfor %}
+            </select>
+          </div>
+          <div class="form-group col-md-3">
+            <select name="month" id="" class="form-control">
+              <option value="">Month</option>
+              <option value="1">Jan</option>
+              <option value="2">Feb</option>
+              <option value="3">Mar</option>
+              <option value="4">Apr</option>
+              <option value="5">May</option>
+              <option value="6">Jun</option>
+              <option value="7">Jul</option>
+              <option value="8">Aug</option>
+              <option value="9">Sep</option>
+              <option value="10">Oct</option>
+              <option value="11">Nov</option>
+              <option value="12">Dec</option>
+            </select>
+          </div>
+          <div class="form-group col-md-3">
+            <select name="year" id="" class="form-control">
+              <option value="">Year</option>
+              {% for i in year %}
+              <option>{{ i }}</option>
+              {% endfor %}
+            </select>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <label class="lbl_reg" for="">Gender</label>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="form-group col-md-12">
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" name="gender" id="inlineRadio1" value="Male">
+              <label class="form-check-label" for="inlineRadio1">Male</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" name="gender" id="inlineRadio1" value="Female">
+              <label class="form-check-label" for="inlineRadio1">Female</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" name="gender" id="inlineRadio1" value="Custom">
+              <label class="form-check-label" for="inlineRadio1">Custom</label>
+            </div>
+          </div>
+        </div>
+        <div class="form-group row">
+          <div class="col-sm-10 ">
+            <p class="desc4 lbl_reg2">By clicking Sign Up, you agree to our <button style="color:#385898; "
+                type="button" class="btn btn-link desc4 px-0">Terms, Data Policy </button> and <button type="button"
+                style="color:#385898;" class="btn btn-link px-0 desc4">Cookie Policy</button>. You may receive SMS
+              notifications from us and can opt out at any time.</p>
+
+            <button type="submit" class="sub_btn btn">Sign Up</button>
+
+          </div>
+        </div>
+        <div class="form-group row">
+          <div class="col-sm-12">
+            <p id="lastdesc" class="desc4 lbl_reg2"><button style="color:#385898; font-weight: 500;" type="button"
+                class="btn btn-link desc4 px-0">Create a Page</button> for a celebrity, band or business.</p>
+
+          </div>
+        </div>
+
+      </form>
+    </div>
+
+
+{% endblock %}

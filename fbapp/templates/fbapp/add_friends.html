@@ -1,0 +1,53 @@
+{% extends "fbapp/home.html" %}
+{% block content %}
+
+<script>
+    $(document).ready(function () {
+            
+        $('.btnadd').click(function (e) {
+            //alert(e.target.id);
+            $.ajax({
+                url: 'http://127.0.0.1:8000/facebook/sendrequest/',
+                type: 'POST',
+                data: {
+                    rec_id: this.id,
+                    // return int(value)ValueError: invalid literal for int() with base 10 error came bcz of this.id
+                    csrfmiddlewaretoken: '{{ csrf_token }}'
+                },
+                success: function (status,reci_id) {  
+                    alert(reci_id);                                     
+                    $('#' + reci_id).html(status);
+                    alert(reci_id)
+
+                },
+                error: function (res) {
+                    console.log(res);
+                }
+            });
+        });
+
+    });
+</script>
+
+{% csrf_token %}
+<ul class="list-group list-group-flush">
+        {% for user in userdetails %}
+    <div class="row">
+        <div class="col-md-4 "><li class="list-group-item" style="background-color: whitesmoke;">{{ user.firstname }}</li></div>
+        <div class="col-md-4 "><button  class="btnadd" id="{{ user.user.id }}">Add friend</button>
+        </div>
+    </div>
+        {% endfor %}
+</ul>
+
+    
+
+
+
+
+
+
+
+
+
+{% endblock %}
