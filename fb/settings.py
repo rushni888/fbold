@@ -124,5 +124,6 @@ STATIC_URL = '/static/'
 
 MEDIA_URL='/media/'
 # for browser
+
 MEDIA_ROOT=os.path.join(BASE_DIR,'media')
 # for server
